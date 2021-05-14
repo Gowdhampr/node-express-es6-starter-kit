@@ -4,9 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./bin/www --exec babel-node",
-    "lint": "eslint src/js"
+    "start": "npm run sequelize && nodemon ./bin/www --exec babel-node",
+    "prod": "node ./dist/app.js",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./.nvmrc,./npm-debug.log --copy-files",
+    "sequelize": "npx sequelize-cli db:migrate",
+    "test": "npm run lint",
+    "lint": "echo ESLint: && ./node_modules/.bin/eslint -v && ./node_modules/.bin/eslint . --ignore-path .gitignore"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +19,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-preset-env": "^1.7.0",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "connect-multiparty": "^2.2.0",
@@ -23,8 +27,15 @@
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
+    "moment-range": "^4.0.2",
+    "moment-timezone": "^0.5.33",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.22.3",
+    "sequelize-cli": "^6.2.0",
+    "ts-sequelize-models": "^1.2.2"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.26.0"

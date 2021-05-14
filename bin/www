@@ -8,16 +8,16 @@ import app from "../app";
 import debug from "debug";
 import http from "http";
 
-debug("vta-api:server");
+debug("Marketplace-api:server");
 
 /**
  * Get port from environment and store in Express.
  */
 
- const port = normalizePort(process.env.PORT || "80");
- app.set("port", port);
+const port = normalizePort(process.env.PORT || "80");
+app.set("port", port);
 
- /**
+/**
  * Create HTTP server.
  */
 
@@ -35,7 +35,7 @@ server.on("listening", onListening);
  * Normalize a port into a number, string, or false.
  */
 
- function normalizePort(val) {
+function normalizePort(val) {
     const port = parseInt(val, 10);
 
     if (isNaN(port)) {
@@ -55,7 +55,7 @@ server.on("listening", onListening);
  * Event listener for HTTP server "error" event.
  */
 
- function onError(error) {
+function onError(error) {
     if (error.syscall !== "listen") {
         throw error;
     }
@@ -81,7 +81,7 @@ server.on("listening", onListening);
  * Event listener for HTTP server "listening" event.
  */
 
- function onListening() {
+function onListening() {
     const addr = server.address();
     const bind =
         typeof addr === "string" ? "pipe " + addr : "port " + addr.port;

@@ -11,6 +11,7 @@ dotenv.config();
 
 // routes
 import rootRoute from "./routes";
+import userRoute from "./routes/userRoute";
 
 // initialize app
 const app = express();
@@ -38,6 +39,9 @@ app.use(cookieParser());
 
 // apply routes
 app.use("/", rootRoute);
+
+// User Route
+app.use(`/v1/user`, userRoute);
 
 // Healthz Route
 app.get("/healthz", (req, res) => {
